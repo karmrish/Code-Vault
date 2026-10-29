@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CodeVault - Escape Room</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- MARQUEE -->
+    <marquee>
+        ⚡ SYSTEM ONLINE &nbsp; | &nbsp;
+        🔓 5 LOCKS REMAIN &nbsp; | &nbsp;
+        💡 USE HINTS CAREFULLY &nbsp; | &nbsp;
+        ⏱️ ESCAPE BEFORE TIME RUNS OUT
+    </marquee>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <span class="brand">CODEVAULT</span>
+        <div class="links">
+            <a href="#home">HOME</a>
+            <a href="#rules">RULES</a>
+            <a href="#game">GAME</a>
+            <a href="#about">ABOUT</a>
+        </div>
+    </nav>
+
+    <!-- HOME -->
+    <section id="home" class="hero">
+        <div class="heroText">
+            <p class="smallTitle" id="welcomeText">WELCOME, CODER</p>
+            <h1>CAN YOU <span>ESCAPE?</span></h1>
+            <p>
+                Enter the CodeVault, solve the coding puzzles,
+                unlock every security lock and escape before
+                the system shuts down.
+            </p>
+            <button onclick="goToGame()">ENTER THE VAULT →</button>
+        </div>
+
+        <div class="terminal">
+            <p>root@codevault:~$</p>
+            <p>Initializing system...</p>
+            <p>Loading HTML...</p>
+            <p>Loading CSS...</p>
+            <p>Loading JavaScript...</p>
+            <p class="green">SYSTEM READY_</p>
+        </div>
+    </section>
+
+    <!-- RULES -->
+    <section id="rules" class="info">
+        <h2>MISSION BRIEFING</h2>
+        <div class="cards">
+            <article>
+                <h3>⏱️ 90 SECONDS</h3>
+                <p>Solve the puzzles before the timer reaches zero.</p>
+            </article>
+            <article>
+                <h3>❤️ 3 LIVES</h3>
+                <p>Wrong answers and skips cost you one life.</p>
+            </article>
+            <article>
+                <h3>💡 HINTS</h3>
+                <p>One hint per lock. Using it halves your points.</p>
+            </article>
+            <article>
+                <h3>🔐 5 LOCKS</h3>
+                <p>Unlock all five coding challenges to escape.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- GAME -->
+    <section id="game" class="gameSection">
+
+        <!-- START BOX -->
+        <div id="startBox">
+            <h2>READY TO ESCAPE?</h2>
+            <p>Your coding skills are your only way out.</p>
+            <input type="text" id="playerName" maxlength="15"
+                placeholder="Enter your name" autocomplete="off">
+            <p id="nameError"></p>
+            <button onclick="startGame()">START GAME</button>
+        </div>
+
+        <!-- GAME BOX -->
+        <div id="gameBox" class="hidden">
+            <div class="status">
+                <div>👤 <span id="playerLabel">Player</span></div>
+                <div id="timeBox">⏱️ <span id="timer">90</span></div>
+                <div>❤️ <span id="lives">3</span></div>
+                <div>⭐ <span id="score">0</span></div>
+                <div>🔓 <span id="lockNumber">1</span>/5</div>
+            </div>
+
+            <div class="progress">
+                <div id="progressBar"></div>
+            </div>
+
+            <div class="roomName">
+                <span id="room">HTML CHAMBER</span>
+            </div>
+
+            <div class="questionBox">
+                <p class="lock">SECURITY LOCK</p>
+                <h2 id="question">Question</h2>
+                <div id="options"></div>
+            </div>
+
+            <div class="gameButtons">
+                <button id="hintBtn" onclick="showHint()">💡 HINT</button>
+                <button id="skipBtn" onclick="skipQuestion()">SKIP →</button>
+            </div>
+
+            <p id="hint"></p>
+            <p id="message"></p>
+        </div>
+
+        <!-- WIN BOX -->
+        <div id="winBox" class="hidden">
+            <div class="winIcon">🔓</div>
+            <h1>ACCESS GRANTED</h1>
+            <p>Congratulations, <b class="playerNameText" id="winName">Coder</b>!</p>
+            <p>You successfully escaped the CodeVault.</p>
+
+            <div class="result">
+                <p>SCORE: <b id="finalScore">0</b></p>
+                <p>LIVES LEFT: <b id="finalLives">0</b></p>
+                <p>TIME LEFT: <b id="finalTime">0</b>s</p>
+            </div>
+
+            <button onclick="playAgain()">PLAY AGAIN</button>
+        </div>
+
+        <!-- GAME OVER BOX -->
+        <div id="loseBox" class="hidden">
+            <div class="loseIcon">🔒</div>
+            <h1>ACCESS DENIED</h1>
+            <p>Better luck next time, <b class="playerNameText" id="loseName">Coder</b>.</p>
+            <p id="loseMessage">The system has been locked.</p>
+
+            <div class="result">
+                <p>LOCKS OPENED: <b id="loseLocks">0</b>/5</p>
+                <p>SCORE: <b id="loseScore">0</b></p>
+            </div>
+
+            <button onclick="playAgain()">TRY AGAIN</button>
+        </div>
+
+        <!-- LEADERBOARD -->
+        <div id="leaderboard">
+            <h3>🏆 TOP PLAYERS</h3>
+            <ol id="boardList"></ol>
+            <button id="clearBoard" onclick="clearScores()">CLEAR SCORES</button>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about">
+        <h2>ABOUT CODEVAULT</h2>
+        <p>
+            CodeVault is an interactive frontend project created
+            using HTML, CSS and JavaScript. Players solve coding
+            challenges while racing against the clock.
+        </p>
+        <div class="tech">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JAVASCRIPT</span>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div>
+            <b>CODEVAULT</b>
+            <p>Learn. Solve. Escape.</p>
+        </div>
+        <div>
+            <p>Frontend Project</p>
+            <p>© 2026 CodeVault</p>
+        </div>
+    </footer>
+
+    <!-- DIALOG BOX -->
+    <dialog id="gameDialog">
+        <h2 id="dialogTitle">CodeVault Message</h2>
+        <p id="dialogMessage">Message goes here.</p>
+        <button onclick="closeDialog()">OK</button>
+    </dialog>
+
+    <script src="script.js"></script>
+</body>
+</html>
