@@ -49,13 +49,13 @@ No installation or build step is needed.
 
 1. Clone or download this repository:
 
-   git clone https://github.com/karmrish/FINAL-ONE.git
+   git clone https://github.com/karmrish/Code-Vault.git
   
 2. Open the folder and double-click `index.html`, or use the **Live Server** extension in VS Code.
 
 ## 🌐 Live Demo
 
-Hosted with GitHub Pages: `https://karmrish.github.io/FINAL-ONE/`
+Hosted with GitHub Pages: `https://karmrish.github.io/Code-Vault/`
 
 ## ➕ Adding Your Own Questions
 
