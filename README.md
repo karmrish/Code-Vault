@@ -62,6 +62,7 @@ Hosted with GitHub Pages: `https://karmrish.github.io/FINAL-ONE/`
 Open `script.js` and add an object to the `questions` array:
 
 js
+
 {
     room: "JAVASCRIPT CHAMBER",
     question: "Your question here?",
